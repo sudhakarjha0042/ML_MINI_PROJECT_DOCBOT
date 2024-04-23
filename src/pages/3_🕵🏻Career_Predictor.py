@@ -4,6 +4,7 @@ import re
 import PyPDF2
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+
 # Load the trained classifier and TfidfVectorizer
 clf = pickle.load(open('clf.pkl', 'rb'))
 tfidf = pickle.load(open('tfidf.pkl', 'rb'))
@@ -17,7 +18,12 @@ def extract_text_from_pdf(pdf_file):
     for page_num in range(pdf_reader.numPages):
         page = pdf_reader.getPage(page_num)
         text += page.extractText()
+    show_pdf_file(text)
     return text
+
+def show_pdf_file(pdf_text):
+    file_container = st.expander("Your PDF file :")
+    file_container.write(pdf_text)
 
 def cleanResume(txt):
     cleanText = re.sub('http\S+\s', ' ', txt)

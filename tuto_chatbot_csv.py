@@ -10,7 +10,7 @@ from langchain.vectorstores import FAISS
 import tempfile
 
 
-user_api_key = "open_api_key"
+user_api_key = "open-api-key"
 
 uploaded_file = st.sidebar.file_uploader("upload", type="csv")
 
