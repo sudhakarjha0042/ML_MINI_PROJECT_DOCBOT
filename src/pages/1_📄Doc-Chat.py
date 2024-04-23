@@ -26,14 +26,14 @@ Layout = layout_module.Layout
 Utilities = utils_module.Utilities
 Sidebar = sidebar_module.Sidebar
 
-st.set_page_config(layout="wide", page_icon="💬", page_title="Doc-Bot | Chat-Bot 🤖")
+st.set_page_config(layout="wide", page_icon="💬", page_title="DocSense | Chat-Bot 🤖")
 
 # Instantiate the main components
 layout, sidebar, utils = Layout(), Sidebar(), Utilities()
 
 layout.show_header("PDF, TXT, CSV")
 
-user_api_key = "open_api_key"
+user_api_key = utils.load_api_key()
 
 if not user_api_key:
     layout.show_api_key_missing()
@@ -96,5 +96,4 @@ else:
                 history.generate_messages(response_container)
         except Exception as e:
             st.error(f"Error: {str(e)}")
-
 

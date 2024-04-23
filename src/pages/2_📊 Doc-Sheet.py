@@ -4,7 +4,7 @@ import sys
 import pandas as pd
 import streamlit as st
 from io import BytesIO
-from modules.robby_sheet.table_tool import PandasAgent 
+from modules.DocSense_sheet.table_tool import PandasAgent
 from modules.layout import Layout
 from modules.utils import Utilities
 from modules.sidebar import Sidebar
@@ -17,13 +17,13 @@ def reload_module(module_name):
         importlib.reload(sys.modules[module_name])
     return sys.modules[module_name]
 
-table_tool_module = reload_module('modules.robby_sheet.table_tool')
+table_tool_module = reload_module('modules.DocSense_sheet.table_tool')
 layout_module = reload_module('modules.layout')
 utils_module = reload_module('modules.utils')
 sidebar_module = reload_module('modules.sidebar')
 
 
-st.set_page_config(layout="wide", page_icon="💬", page_title="Doc-Bot | Chat-Bot 🤖")
+st.set_page_config(layout="wide", page_icon="💬", page_title="DocSense | Chat-Bot 🤖")
 
 layout, sidebar, utils = Layout(), Sidebar(), Utilities()
 
@@ -74,4 +74,3 @@ else:
         if st.session_state.df is not None:
             st.subheader("Current dataframe:")
             st.write(st.session_state.df)
-
